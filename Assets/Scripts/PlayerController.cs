@@ -5,10 +5,11 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
     private float speed = 5.0f;
+    private Vector3 moveDirection;
 
     void Start()
     {
-        
+      
     }
 
 
@@ -17,6 +18,7 @@ public class PlayerController : MonoBehaviour {
         var x = Input.GetAxis("Horizontal") * Time.deltaTime * 3.0f;
         var z = Input.GetAxis("Vertical") * Time.deltaTime * 3.0f;
 
+        moveDirection = ((transform.forward * Input.GetAxis("Vertical")));
        
         transform.Translate(x * speed, 0, z * speed);
     }
