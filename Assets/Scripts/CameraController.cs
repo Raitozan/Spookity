@@ -40,7 +40,7 @@ public class CameraController : MonoBehaviour {
 
         //Bouger la caméra selon la rotation actuelle de la cible et l'offset de base
         float desiredYAngle = target.eulerAngles.y; //ca j ai encore un peu de mal à comprendre ce que c'est
-        float desiredXAngle = pivot.eulerAngles.x;
+        //float desiredXAngle = pivot.eulerAngles.x;
 
         Quaternion rotation = Quaternion.Euler(0, desiredYAngle, 0);
         transform.position = target.position - (rotation * offset); //Ordre de la multiplication important
