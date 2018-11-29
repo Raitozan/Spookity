@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour {
 
     void Update()
     {
-        Move();
+        MoveJ1();
         LeftArm();
         RightArm();
         LeftLeg();
@@ -22,12 +22,17 @@ public class PlayerController : MonoBehaviour {
         Head();
     }
 
-    private void Move()
+    private void MoveJ1()
     {
         var x = Input.GetAxis("Horizontal");
         var z = Input.GetAxis("Vertical");
 
         transform.Translate(x * speed * Time.deltaTime, 0, z * speed * Time.deltaTime);
+    }
+
+    private void MoveJ2()
+    {
+
     }
 
     private void LeftArm()
