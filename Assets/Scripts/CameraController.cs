@@ -31,11 +31,19 @@ public class CameraController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        //Prendre la position de la souris sur l'axe X et tourner le joueur
-        float horizontal = Input.GetAxis("Mouse X");
-        target.Rotate(0, horizontal, 0);
+		//Prendre la position de la souris sur l'axe X et tourner le joueur
+		float horizontal = 0.0f;
+		if (gameObject.CompareTag("Player1"))
+			horizontal = Input.GetAxis("Mouse X");
+		else if (gameObject.CompareTag("Player2"))
+			horizontal = Input.GetAxis("Mouse X2");
+		target.Rotate(0, horizontal, 0);
 
-        float vertical = Input.GetAxis("Mouse Y") * rotateSpeed;
+		float vertical = 0.0f;
+		if (gameObject.CompareTag("Player1"))
+			vertical = Input.GetAxis("Mouse Y") * rotateSpeed;
+		else if (gameObject.CompareTag("Player2"))
+			vertical = Input.GetAxis("Mouse Y2") * rotateSpeed;
         pivot.Rotate(-vertical, 0, 0);
 
         //Bouger la caméra selon la rotation actuelle de la cible et l'offset de base

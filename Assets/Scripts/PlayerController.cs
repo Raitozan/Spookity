@@ -23,24 +23,33 @@ public class PlayerController : MonoBehaviour {
     }
 
     private void Move()
-    {
-        var x = Input.GetAxis("Horizontal");
-        var z = Input.GetAxis("Vertical");
+	{
+		float x = 0.0f, z = 0.0f;
+		if (gameObject.CompareTag("Player1"))
+		{
+			x = Input.GetAxis("Horizontal");
+			z = Input.GetAxis("Vertical");
+		}
+		else if (gameObject.CompareTag("Player2"))
+		{
+			x = Input.GetAxis("Horizontal2");
+			z = Input.GetAxis("Vertical2");
+		}
 
         transform.Translate(x * speed * Time.deltaTime, 0, z * speed * Time.deltaTime);
     }
 
     private void LeftArm()
     {
-        if (Input.GetButtonDown("LeftArm"))
-        {
+        if ((Input.GetButtonDown("LeftArm") && CompareTag("Player1")) || (Input.GetButtonDown("LeftArm2") && CompareTag("Player2")))
+		{
             Debug.Log("Lancer bras gauche");
         }
     }
 
     private void RightArm()
     {
-        if (Input.GetButtonDown("RightArm"))
+        if ((Input.GetButtonDown("RightArm") && CompareTag("Player1")) || (Input.GetButtonDown("RightArm2") && CompareTag("Player2")))
         {
             Debug.Log("Lancer bras droit");
         }
@@ -48,7 +57,7 @@ public class PlayerController : MonoBehaviour {
 
     private void LeftLeg()
     {
-        if (Input.GetAxis("LeftLeg") >= 0.75)
+        if ((Input.GetAxis("LeftLeg") >= 0.75 && CompareTag("Player1")) || (Input.GetAxis("LeftLeg2") >= 0.75 && CompareTag("Player2")))
         {
             Debug.Log("Lancer jambe gauche");
         }
@@ -56,16 +65,16 @@ public class PlayerController : MonoBehaviour {
 
     private void RightLeg()
     {
-        if (Input.GetAxis("RightLeg") >= 0.75)
-        {
+        if ((Input.GetAxis("RightLeg") >= 0.75 && CompareTag("Player1")) || (Input.GetAxis("RightLeg2") >= 0.75 && CompareTag("Player2")))
+		{
             Debug.Log("Lancer jambe droite");
         }
     }
 
     private void Head()
     {
-        if (Input.GetButtonDown("Head"))
-        {
+        if ((Input.GetButtonDown("Head") && CompareTag("Player1")) || (Input.GetButtonDown("Head2") && CompareTag("Player2")))
+		{
             Debug.Log("Lancer tête");
         }
         

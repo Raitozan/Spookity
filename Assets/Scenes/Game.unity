@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.45019233, g: 0.5002309, b: 0.5754023, a: 1}
+  m_IndirectSpecularColor: {r: 0.450193, g: 0.500232, b: 0.5754034, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -248,13 +248,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 188212851}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 692f6735be003684983c3abbe65f3039, type: 3}
+  m_Script: {fileID: 11500000, guid: 1af39af4b6e83a242a509f11e715fd9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 586038734}
   offset: {x: 0, y: 0, z: 0}
   useOffsetValues: 0
-  rotateSpeed: 20
+  rotateSpeed: 0
   pivot: {fileID: 1615708268}
 --- !u!81 &188212854
 AudioListener:
@@ -437,7 +437,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1898571001688336, guid: 6c317885077b5874d8964710da4070e8, type: 2}
       propertyPath: m_Name
-      value: Skeleton (1)
+      value: Skeleton team 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1898571001688336, guid: 6c317885077b5874d8964710da4070e8, type: 2}
+      propertyPath: m_TagString
+      value: Player2
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114492843928196874, guid: 6c317885077b5874d8964710da4070e8, type: 2}
@@ -534,7 +538,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 976964210}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -3.97, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 6.7402534, y: 3.2125504, z: 8.336569}
   m_Children: []
   m_Father: {fileID: 0}
@@ -664,6 +668,14 @@ Prefab:
         type: 2}
       propertyPath: m_Convex
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1898571001688336, guid: 6c317885077b5874d8964710da4070e8, type: 2}
+      propertyPath: m_TagString
+      value: Player1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1898571001688336, guid: 6c317885077b5874d8964710da4070e8, type: 2}
+      propertyPath: m_Name
+      value: Skeleton team 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c317885077b5874d8964710da4070e8, type: 2}
@@ -812,6 +824,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 2142322192}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0f7641a2724dcfe4dbeb5f66256b1c4f, type: 3}
+  m_Script: {fileID: 11500000, guid: d00a41220dc6f7740a6ae59ec90c6389, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
