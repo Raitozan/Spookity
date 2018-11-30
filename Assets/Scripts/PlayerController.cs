@@ -6,7 +6,14 @@ public class PlayerController : MonoBehaviour {
 
     private float speed = 15.0f;
 
-    void Start()
+	public GameObject head;
+	public GameObject leftArm;
+	public GameObject rightArm;
+	public GameObject leftLeg;
+	public GameObject rightLeg;
+
+
+	void Start()
     {
       
     }
@@ -44,7 +51,7 @@ public class PlayerController : MonoBehaviour {
     {
         if ((Input.GetButtonDown("LeftArm") && CompareTag("Player1")) || (Input.GetButtonDown("LeftArm2") && CompareTag("Player2")))
 		{
-            Debug.Log("Lancer bras gauche");
+			leftArm.SetActive(false);
         }
     }
 

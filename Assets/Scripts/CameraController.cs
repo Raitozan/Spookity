@@ -39,22 +39,10 @@ public class CameraController : MonoBehaviour {
 			horizontal = Input.GetAxis("Mouse X2");
 		target.Rotate(0, horizontal, 0);
 
-		/*float vertical = 0.0f;
-		if (gameObject.CompareTag("Player1"))
-			vertical = Input.GetAxis("Mouse Y") * rotateSpeed;
-		else if (gameObject.CompareTag("Player2"))
-			vertical = Input.GetAxis("Mouse Y2") * rotateSpeed;
-        pivot.Rotate(-vertical, 0, 0);*/
-
         //Bouger la caméra selon la rotation actuelle de la cible et l'offset de base
-        float desiredYAngle = target.eulerAngles.y; //ca j ai encore un peu de mal à comprendre ce que c'est
-        //float desiredXAngle = pivot.eulerAngles.x;
+        float desiredYAngle = target.eulerAngles.y;
 
         Quaternion rotation = Quaternion.Euler(0, desiredYAngle, 0);
         transform.position = target.position - (rotation * offset); //Ordre de la multiplication important
-
-        //transform.position = target.position - offset;
-
-        //transform.LookAt(target);	
 	}
 }
