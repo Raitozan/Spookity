@@ -27,16 +27,17 @@ public class PlayerController : MonoBehaviour {
 		float x = 0.0f, z = 0.0f;
 		if (gameObject.CompareTag("Player1"))
 		{
-			x = Input.GetAxis("Horizontal");
-			z = Input.GetAxis("Vertical");
+			z = Input.GetAxis("Horizontal");
+			x = Input.GetAxis("Vertical");
 		}
 		else if (gameObject.CompareTag("Player2"))
 		{
-			x = Input.GetAxis("Horizontal2");
-			z = Input.GetAxis("Vertical2");
+			z = Input.GetAxis("Horizontal2");
+			x = Input.GetAxis("Vertical2");
 		}
 
-        transform.Translate(x * speed * Time.deltaTime, 0, z * speed * Time.deltaTime);
+        //transform.Translate(x * speed * Time.deltaTime, 0, z * speed * Time.deltaTime);
+		GetComponent<Rigidbody>().MovePosition(transform.position + transform.forward * (x * speed * Time.deltaTime) + transform.right * (z * speed * Time.deltaTime));
     }
 
     private void LeftArm()
