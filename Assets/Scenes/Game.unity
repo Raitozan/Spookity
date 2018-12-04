@@ -572,7 +572,7 @@ MonoBehaviour:
   target: {fileID: 586038734}
   offset: {x: 0, y: 0, z: 0}
   useOffsetValues: 0
-  rotateSpeed: 20
+  rotateSpeed: 80
   pivot: {fileID: 1615708268}
 --- !u!81 &188212854
 AudioListener:
@@ -1587,7 +1587,7 @@ MonoBehaviour:
   target: {fileID: 365669156}
   offset: {x: 0, y: 0, z: 0}
   useOffsetValues: 0
-  rotateSpeed: 20
+  rotateSpeed: 80
   pivot: {fileID: 184274092}
 --- !u!1 &1955932151
 GameObject:

@@ -8,18 +8,14 @@ public class CameraController : MonoBehaviour {
 
     public Vector3 offset;
 
-    public bool useOffsetValues;
-
     public float rotateSpeed;
 
     public Transform pivot;
 
 	// Use this for initialization
-	void Start () {
-        if (!useOffsetValues)
-        {
-            offset = target.position - transform.position;
-        }
+	void Start ()
+	{
+        offset = target.position - transform.position;
 
         pivot.transform.position = target.transform.position;
         pivot.transform.parent = target.transform; //Fait en sorte de faire du Pivot un objet enfant de l'objet joueur dès le lancement du jeu
@@ -29,7 +25,8 @@ public class CameraController : MonoBehaviour {
 
 	
 	// Update is called once per frame
-	void Update () {
+	void Update ()
+	{
 
 		//Prendre la position de la souris sur l'axe X et tourner le joueur
 		float horizontal = 0.0f;
@@ -37,7 +34,8 @@ public class CameraController : MonoBehaviour {
 			horizontal = Input.GetAxis("Mouse X");
 		else if (gameObject.CompareTag("Player2"))
 			horizontal = Input.GetAxis("Mouse X2");
-		target.Rotate(0, horizontal, 0);
+
+		target.Rotate(0, horizontal*rotateSpeed*Time.deltaTime, 0);
 
         //Bouger la caméra selon la rotation actuelle de la cible et l'offset de base
         float desiredYAngle = target.eulerAngles.y;
