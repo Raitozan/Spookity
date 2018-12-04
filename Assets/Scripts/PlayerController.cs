@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour {
 	public GameObject thrownArm;
 	public GameObject thrownLeg;
 
+	public Animator animator;
 
 	void Start()
     {
@@ -27,12 +28,15 @@ public class PlayerController : MonoBehaviour {
 			team1 = true;
 		else
 			team1 = false;
+
+		animator.SetBool("baseAttackRight", true);
 	}
 
 
     void Update()
     {
         Move();
+		BaseAttack();
         LeftArm();
         RightArm();
         LeftLeg();
@@ -57,9 +61,35 @@ public class PlayerController : MonoBehaviour {
 			x = Input.GetAxis("Vertical2");
 		}
 
+		if (x == 0 && z == 0)
+		{
+			animator.SetBool("isMoving", false);
+		}
+		else
+		{
+			animator.SetBool("isMoving", true);
+		}
+
         //transform.Translate(x * speed * Time.deltaTime, 0, z * speed * Time.deltaTime);
 		GetComponent<Rigidbody>().MovePosition(transform.position + transform.forward * (x * speed * Time.deltaTime) + transform.right * (z * speed * Time.deltaTime));
     }
+
+	private void BaseAttack()
+	{
+		animator.SetBool("isAttacking", false);
+		if ((Input.GetButtonDown("BaseAttack") && CompareTag("Player1")) || (Input.GetButtonDown("BaseAttack2") && CompareTag("Player2")))
+		{
+			Debug.Log(Input.GetButtonDown("BaseAttack"));
+			Debug.Log(CompareTag("Player1"));
+			Debug.Log(Input.GetButtonDown("BaseAttack2"));
+			Debug.Log(CompareTag("Player2"));
+			if (leftArm.activeInHierarchy || rightArm.activeInHierarchy)
+			{
+				animator.SetBool("isAttacking", true);
+			}
+
+		}
+	}
 
     private void LeftArm()
     {
@@ -83,6 +113,7 @@ public class PlayerController : MonoBehaviour {
         if (Input.GetButtonDown("RightArm") && team1 && rightArm.activeInHierarchy || (Input.GetButtonDown("RightArm2") && !team1 && rightArm.activeInHierarchy))
         {
 			rightArm.SetActive(false);
+			animator.SetBool("baseAttackRight", false);
 			ThrownMember rightA = Instantiate(thrownArm, rightArm.transform.position, Quaternion.identity).GetComponent<ThrownMember>();
 			rightA.direction = transform.forward;
 			rightA.start = transform.position;
@@ -144,6 +175,5 @@ public class PlayerController : MonoBehaviour {
 			else
 				tHead.team1 = false;
 		}
-        
     }
 }
