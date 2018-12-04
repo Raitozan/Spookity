@@ -3,20 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-
+	
+	public int health = 100;
     private float speed = 15.0f;
+	public bool team1;
 
+	[Header("Members")]
 	public GameObject head;
 	public GameObject leftArm;
 	public GameObject rightArm;
 	public GameObject leftLeg;
 	public GameObject rightLeg;
 
+	[Header("Thrown Members")]
+	public GameObject thrownHead;
+	public GameObject thrownArm;
+	public GameObject thrownLeg;
+
 
 	void Start()
     {
-      
-    }
+		if (gameObject.CompareTag("Player1"))
+			team1 = true;
+		else
+			team1 = false;
+	}
 
 
     void Update()
@@ -27,6 +38,9 @@ public class PlayerController : MonoBehaviour {
         LeftLeg();
         RightLeg();
         Head();
+
+		if (health <= 0)
+			Debug.Log("DED");
     }
 
     private void Move()
@@ -49,42 +63,87 @@ public class PlayerController : MonoBehaviour {
 
     private void LeftArm()
     {
-        if ((Input.GetButtonDown("LeftArm") && CompareTag("Player1")) || (Input.GetButtonDown("LeftArm2") && CompareTag("Player2")))
+        if (Input.GetButtonDown("LeftArm") && team1 && leftArm.activeInHierarchy || (Input.GetButtonDown("LeftArm2") && !team1 && leftArm.activeInHierarchy))
 		{
 			leftArm.SetActive(false);
-        }
+			ThrownMember leftA = Instantiate(thrownArm, leftArm.transform.position, Quaternion.identity).GetComponent<ThrownMember>();
+			leftA.direction = transform.forward;
+			leftA.start = transform.position;
+			leftA.damage = 10;
+
+			if (team1)
+				leftA.team1 = true;
+			else
+				leftA.team1 = false;
+		}
     }
 
     private void RightArm()
     {
-        if ((Input.GetButtonDown("RightArm") && CompareTag("Player1")) || (Input.GetButtonDown("RightArm2") && CompareTag("Player2")))
+        if (Input.GetButtonDown("RightArm") && team1 && rightArm.activeInHierarchy || (Input.GetButtonDown("RightArm2") && !team1 && rightArm.activeInHierarchy))
         {
-            Debug.Log("Lancer bras droit");
-        }
+			rightArm.SetActive(false);
+			ThrownMember rightA = Instantiate(thrownArm, rightArm.transform.position, Quaternion.identity).GetComponent<ThrownMember>();
+			rightA.direction = transform.forward;
+			rightA.start = transform.position;
+			rightA.damage = 15;
+
+			if (team1)
+				rightA.team1 = true;
+			else
+				rightA.team1 = false;
+		}
     }
 
     private void LeftLeg()
     {
-        if ((Input.GetAxis("LeftLeg") >= 0.75 && CompareTag("Player1")) || (Input.GetAxis("LeftLeg2") >= 0.75 && CompareTag("Player2")))
+        if (Input.GetAxis("LeftLeg") >= 0.75 && team1 && leftLeg.activeInHierarchy || (Input.GetAxis("LeftLeg2") >= 0.75 && !team1 && leftLeg.activeInHierarchy))
         {
-            Debug.Log("Lancer jambe gauche");
-        }
+			leftLeg.SetActive(false);
+			ThrownMember leftL = Instantiate(thrownLeg, leftLeg.transform.position, Quaternion.identity).GetComponent<ThrownMember>();
+			leftL.direction = transform.forward;
+			leftL.start = transform.position;
+			leftL.damage = 10;
+
+			if (team1)
+				leftL.team1 = true;
+			else
+				leftL.team1 = false;
+		}
     }
 
     private void RightLeg()
     {
-        if ((Input.GetAxis("RightLeg") >= 0.75 && CompareTag("Player1")) || (Input.GetAxis("RightLeg2") >= 0.75 && CompareTag("Player2")))
+        if (Input.GetAxis("RightLeg") >= 0.75 && team1 && rightLeg.activeInHierarchy || (Input.GetAxis("RightLeg2") >= 0.75 && !team1 && rightLeg.activeInHierarchy))
 		{
-            Debug.Log("Lancer jambe droite");
-        }
+			rightLeg.SetActive(false);
+			ThrownMember rightL = Instantiate(thrownLeg, rightLeg.transform.position, Quaternion.identity).GetComponent<ThrownMember>();
+			rightL.direction = transform.forward;
+			rightL.start = transform.position;
+			rightL.damage = 10;
+
+			if (team1)
+				rightL.team1 = true;
+			else
+				rightL.team1 = false;
+		}
     }
 
     private void Head()
     {
-        if ((Input.GetButtonDown("Head") && CompareTag("Player1")) || (Input.GetButtonDown("Head2") && CompareTag("Player2")))
+        if (Input.GetButtonDown("Head") && team1 && head.activeInHierarchy || (Input.GetButtonDown("Head2") && !team1 && head.activeInHierarchy))
 		{
-            Debug.Log("Lancer tête");
-        }
+			head.SetActive(false);
+			ThrownMember tHead = Instantiate(thrownHead, head.transform.position, Quaternion.identity).GetComponent<ThrownMember>();
+			tHead.direction = transform.forward;
+			tHead.start = transform.position;
+			tHead.damage = 30;
+
+			if (team1)
+				tHead.team1 = true;
+			else
+				tHead.team1 = false;
+		}
         
     }
 }
