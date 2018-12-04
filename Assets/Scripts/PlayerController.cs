@@ -79,10 +79,6 @@ public class PlayerController : MonoBehaviour {
 		animator.SetBool("isAttacking", false);
 		if ((Input.GetButtonDown("BaseAttack") && CompareTag("Player1")) || (Input.GetButtonDown("BaseAttack2") && CompareTag("Player2")))
 		{
-			Debug.Log(Input.GetButtonDown("BaseAttack"));
-			Debug.Log(CompareTag("Player1"));
-			Debug.Log(Input.GetButtonDown("BaseAttack2"));
-			Debug.Log(CompareTag("Player2"));
 			if (leftArm.activeInHierarchy || rightArm.activeInHierarchy)
 			{
 				animator.SetBool("isAttacking", true);
