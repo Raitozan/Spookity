@@ -77,7 +77,7 @@ public class PlayerController : MonoBehaviour {
 	private void BaseAttack()
 	{
 		animator.SetBool("isAttacking", false);
-		if ((Input.GetButtonDown("BaseAttack") && CompareTag("Player1")) || (Input.GetButtonDown("BaseAttack2") && CompareTag("Player2")))
+		if ((Input.GetKeyDown(KeyCode.Joystick1Button0) && CompareTag("Player1")) || (Input.GetKeyDown(KeyCode.Joystick2Button0) && CompareTag("Player2")))
 		{
 			if (leftArm.activeInHierarchy || rightArm.activeInHierarchy)
 			{
@@ -89,7 +89,7 @@ public class PlayerController : MonoBehaviour {
 
     private void LeftArm()
     {
-        if (Input.GetButtonDown("LeftArm") && team1 && leftArm.activeInHierarchy || (Input.GetButtonDown("LeftArm2") && !team1 && leftArm.activeInHierarchy))
+        if ((Input.GetKeyDown(KeyCode.Joystick1Button4) && team1 && leftArm.activeInHierarchy) || (Input.GetKeyDown(KeyCode.Joystick2Button4) && !team1 && leftArm.activeInHierarchy))
 		{
 			leftArm.SetActive(false);
 			ThrownMember leftA = Instantiate(thrownArm, leftArm.transform.position, Quaternion.identity).GetComponent<ThrownMember>();
@@ -106,7 +106,7 @@ public class PlayerController : MonoBehaviour {
 
     private void RightArm()
     {
-        if (Input.GetButtonDown("RightArm") && team1 && rightArm.activeInHierarchy || (Input.GetButtonDown("RightArm2") && !team1 && rightArm.activeInHierarchy))
+        if ((Input.GetKeyDown(KeyCode.Joystick1Button5) && team1 && rightArm.activeInHierarchy) || (Input.GetKeyDown(KeyCode.Joystick2Button5) && !team1 && rightArm.activeInHierarchy))
         {
 			rightArm.SetActive(false);
 			animator.SetBool("baseAttackRight", false);
@@ -124,7 +124,7 @@ public class PlayerController : MonoBehaviour {
 
     private void LeftLeg()
     {
-        if (Input.GetAxis("LeftLeg") >= 0.75 && team1 && leftLeg.activeInHierarchy || (Input.GetAxis("LeftLeg2") >= 0.75 && !team1 && leftLeg.activeInHierarchy))
+        if ((Input.GetAxis("LeftLeg") >= 0.75 && team1 && leftLeg.activeInHierarchy) || (Input.GetAxis("LeftLeg2") >= 0.75 && !team1 && leftLeg.activeInHierarchy))
         {
 			leftLeg.SetActive(false);
 			ThrownMember leftL = Instantiate(thrownLeg, leftLeg.transform.position, Quaternion.identity).GetComponent<ThrownMember>();
@@ -141,7 +141,7 @@ public class PlayerController : MonoBehaviour {
 
     private void RightLeg()
     {
-        if (Input.GetAxis("RightLeg") >= 0.75 && team1 && rightLeg.activeInHierarchy || (Input.GetAxis("RightLeg2") >= 0.75 && !team1 && rightLeg.activeInHierarchy))
+        if ((Input.GetAxis("RightLeg") >= 0.75 && team1 && rightLeg.activeInHierarchy) || (Input.GetAxis("RightLeg2") >= 0.75 && !team1 && rightLeg.activeInHierarchy))
 		{
 			rightLeg.SetActive(false);
 			ThrownMember rightL = Instantiate(thrownLeg, rightLeg.transform.position, Quaternion.identity).GetComponent<ThrownMember>();
@@ -158,7 +158,7 @@ public class PlayerController : MonoBehaviour {
 
     private void Head()
     {
-        if (Input.GetButtonDown("Head") && team1 && head.activeInHierarchy || (Input.GetButtonDown("Head2") && !team1 && head.activeInHierarchy))
+        if ((Input.GetKeyDown(KeyCode.Joystick1Button3) && team1 && head.activeInHierarchy) || (Input.GetKeyDown(KeyCode.Joystick2Button3) && !team1 && head.activeInHierarchy))
 		{
 			head.SetActive(false);
 			ThrownMember tHead = Instantiate(thrownHead, head.transform.position, Quaternion.identity).GetComponent<ThrownMember>();
