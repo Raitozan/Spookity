@@ -3,10 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
-	
+
+	public Animator animator;
+
 	public int health = 100;
     private float speed = 15.0f;
 	public bool team1;
+
+	public float reloadTime;
+	[HideInInspector]
+	public float reloadTimer;
 
 	[Header("Members")]
 	public GameObject head;
@@ -19,8 +25,6 @@ public class PlayerController : MonoBehaviour {
 	public GameObject thrownHead;
 	public GameObject thrownArm;
 	public GameObject thrownLeg;
-
-	public Animator animator;
 
 	void Start()
     {
@@ -77,11 +81,14 @@ public class PlayerController : MonoBehaviour {
 	private void BaseAttack()
 	{
 		animator.SetBool("isAttacking", false);
-		if ((Input.GetKeyDown(KeyCode.Joystick1Button0) && CompareTag("Player1")) || (Input.GetKeyDown(KeyCode.Joystick2Button0) && CompareTag("Player2")))
+		if(reloadTimer > 0)
+			reloadTimer -= Time.deltaTime;
+		else if ((Input.GetKeyDown(KeyCode.Joystick1Button0) && CompareTag("Player1")) || (Input.GetKeyDown(KeyCode.Joystick2Button0) && CompareTag("Player2")))
 		{
 			if (leftArm.activeInHierarchy || rightArm.activeInHierarchy)
 			{
 				animator.SetBool("isAttacking", true);
+				reloadTimer = reloadTime;
 			}
 
 		}
