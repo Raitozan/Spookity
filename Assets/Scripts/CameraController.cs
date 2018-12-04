@@ -6,6 +6,7 @@ public class CameraController : MonoBehaviour {
 
     public Transform target;
 
+	[HideInInspector]
     public Vector3 offset;
 
     public float rotateSpeed;
