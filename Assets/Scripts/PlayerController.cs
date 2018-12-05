@@ -1,20 +1,24 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour {
 
 	public Animator animator;
-
+	
 	private AudioSource audioSource;
 	public AudioClip death;
 	public AudioClip bodyPart;
 
+	public Text victoryTxt;
+
 	public int health;
 	public float baseSpeed;
 	public float speed;
-
 	public bool team1;
+	public bool dead;
 
 	public float baseReloadTime;
 	public float reloadTime;
@@ -29,6 +33,7 @@ public class PlayerController : MonoBehaviour {
 	public GameObject rightArm;
 	public GameObject leftLeg;
 	public GameObject rightLeg;
+	public GameObject body;
 
 	[Header("Thrown Members")]
 	public GameObject thrownHead;
@@ -42,6 +47,11 @@ public class PlayerController : MonoBehaviour {
 		else
 			team1 = false;
 
+		if (team1)
+			GameManager.instance.p1v = victoryTxt;
+		else
+			GameManager.instance.p2v = victoryTxt;
+
 		animator.SetBool("baseAttackRight", true);
 
 		speed = baseSpeed;
@@ -49,6 +59,7 @@ public class PlayerController : MonoBehaviour {
 		inverted = false;
 		
 		audioSource = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioSource>();
+		dead = false;
 	}
 
 
@@ -61,9 +72,15 @@ public class PlayerController : MonoBehaviour {
         LeftLeg();
         RightLeg();
         Head();
-
+		
 		if (health <= 0)
 			Debug.Log("ded");
+
+		if (health <= 0 && !dead)
+		{
+			dead = true;
+			StartCoroutine(DeathCoroutine());
+		}
     }
 
     private void Move()
@@ -281,5 +298,16 @@ public class PlayerController : MonoBehaviour {
 	public void GetBackOnLeg()
 	{
 		transform.position = new Vector3(transform.position.x, 2.75f, transform.position.z);
+	}
+
+	public IEnumerator DeathCoroutine()
+	{
+		if (team1)
+			GameManager.instance.player2Victory++;
+		else
+			GameManager.instance.player1Victory++;
+		audioSource.PlayOneShot(death);
+		yield return new WaitForSeconds(2);
+		SceneManager.LoadScene(0);
 	}
 }
