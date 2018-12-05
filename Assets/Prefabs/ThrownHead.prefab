@@ -154,6 +154,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28ca04829c7d8e04f8c36c3186cb4b29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nathanHurt: {fileID: 8300000, guid: 3939cd9b15e6bdb4b9d1b409b1facf01, type: 3}
+  nathanHurt2: {fileID: 8300000, guid: c834f0010588dfb418dfa1846088b2c3, type: 3}
+  adrienHurt: {fileID: 8300000, guid: e361b5050e3f0d843a796cb64bee9f36, type: 3}
+  adrienHurt2: {fileID: 8300000, guid: 9688d257eaf8db847a832dd43eca7019, type: 3}
   player: {fileID: 0}
   part: 0
   getBackSpeed: 0.5

@@ -689,6 +689,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f9671314f2140248a656545e71931e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nathanHurt: {fileID: 0}
+  nathanHurt2: {fileID: 0}
+  adrienHurt: {fileID: 0}
+  adrienHurt2: {fileID: 0}
   team1: 1
   damage: 3
 --- !u!114 &114607673349564100
@@ -717,6 +721,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f9671314f2140248a656545e71931e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  nathanHurt: {fileID: 0}
+  nathanHurt2: {fileID: 0}
+  adrienHurt: {fileID: 0}
+  adrienHurt2: {fileID: 0}
   team1: 1
   damage: 3
 --- !u!114 &114980460085667312
@@ -731,9 +739,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 95385375181144382}
-  audio: {fileID: 0}
   death: {fileID: 8300000, guid: 359b009a0823fbb49a17e766ed61a034, type: 3}
-  bodyPart: {fileID: 8300000, guid: 671ead60d0a9894459ca6d4fd0363d39, type: 3}
+  bodyPart: {fileID: 8300000, guid: d704868b95e48a748a13d680e04a8e2b, type: 3}
   health: 100
   baseSpeed: 15
   speed: 0
