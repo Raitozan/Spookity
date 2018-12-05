@@ -11,6 +11,7 @@ public class EndManager : MonoBehaviour
 	void Awake()
 	{
 		Cursor.lockState = CursorLockMode.None;
+		Cursor.visible = true;
 		if(GameManager.instance.player1Victory > GameManager.instance.player2Victory)
 			victory.text = "Player 1 has Won !";
 		else

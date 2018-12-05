@@ -22,6 +22,7 @@ public class CameraController : MonoBehaviour {
         pivot.transform.parent = target.transform; //Fait en sorte de faire du Pivot un objet enfant de l'objet joueur dès le lancement du jeu
 
         Cursor.lockState = CursorLockMode.Locked;
+		Cursor.visible = false;
 	}
 
 	
