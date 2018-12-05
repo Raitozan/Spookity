@@ -72,9 +72,6 @@ public class PlayerController : MonoBehaviour {
         LeftLeg();
         RightLeg();
         Head();
-		
-		if (health <= 0)
-			Debug.Log("ded");
 
 		if (health <= 0 && !dead)
 		{
