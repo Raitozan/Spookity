@@ -1,11 +1,25 @@
 fileFormatVersion: 2
 guid: d00a41220dc6f7740a6ae59ec90c6389
-timeCreated: 1540905950
-licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - animator: {instanceID: 0}
+  - audio: {instanceID: 0}
+  - nathanHurt: {instanceID: 0}
+  - nathanHurt2: {instanceID: 0}
+  - adrienHurt: {fileID: 8300000, guid: e361b5050e3f0d843a796cb64bee9f36, type: 3}
+  - adrienHurt2: {instanceID: 0}
+  - death: {instanceID: 0}
+  - part: {instanceID: 0}
+  - head: {instanceID: 0}
+  - leftArm: {instanceID: 0}
+  - rightArm: {instanceID: 0}
+  - leftLeg: {instanceID: 0}
+  - rightLeg: {instanceID: 0}
+  - thrownHead: {instanceID: 0}
+  - thrownArm: {instanceID: 0}
+  - thrownLeg: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

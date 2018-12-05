@@ -55,7 +55,6 @@ GameObject:
   - component: {fileID: 4893722652504576}
   - component: {fileID: 20449222013811174}
   - component: {fileID: 124643832717081724}
-  - component: {fileID: 81665661740460158}
   - component: {fileID: 114607673349564100}
   m_Layer: 0
   m_Name: Main Camera
@@ -91,7 +90,7 @@ GameObject:
   - component: {fileID: 4489333692528250}
   m_Layer: 0
   m_Name: Pivot
-  m_TagString: Untagged
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -108,7 +107,7 @@ GameObject:
   - component: {fileID: 114908791350802796}
   m_Layer: 0
   m_Name: BaseAttackZone
-  m_TagString: Untagged
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,7 +141,7 @@ GameObject:
   - component: {fileID: 114052228298824396}
   m_Layer: 0
   m_Name: BaseAttackZone
-  m_TagString: Untagged
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -246,7 +245,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1898571001688336}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -23.3, y: 2.75, z: 2.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4476313707679044}
@@ -654,20 +653,13 @@ Rigidbody:
   m_GameObject: {fileID: 1898571001688336}
   serializedVersion: 2
   m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
+  m_Drag: 1000
+  m_AngularDrag: 1000
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 84
+  m_Constraints: 116
   m_CollisionDetection: 0
---- !u!81 &81665661740460158
-AudioListener:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1264587456055260}
-  m_Enabled: 1
 --- !u!95 &95385375181144382
 Animator:
   serializedVersion: 3
@@ -697,7 +689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f9671314f2140248a656545e71931e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team1: 0
+  team1: 1
   damage: 3
 --- !u!114 &114607673349564100
 MonoBehaviour:
@@ -725,7 +717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f9671314f2140248a656545e71931e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  team1: 0
+  team1: 1
   damage: 3
 --- !u!114 &114980460085667312
 MonoBehaviour:
@@ -739,10 +731,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 95385375181144382}
+  audio: {fileID: 0}
+  death: {fileID: 8300000, guid: 359b009a0823fbb49a17e766ed61a034, type: 3}
+  bodyPart: {fileID: 8300000, guid: 671ead60d0a9894459ca6d4fd0363d39, type: 3}
   health: 100
+  baseSpeed: 15
+  speed: 0
   team1: 1
+  baseReloadTime: 0.5
   reloadTime: 0.5
   reloadTimer: 0
+  inverted: 0
   head: {fileID: 1702582331639272}
   leftArm: {fileID: 1965821472141588}
   rightArm: {fileID: 1291476749101248}

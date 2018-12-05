@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class ThrownMember: MonoBehaviour {
 
+	private AudioSource audioSource;
+
+	public AudioClip nathanHurt;
+	public AudioClip nathanHurt2;
+	public AudioClip adrienHurt;
+	public AudioClip adrienHurt2;
+
 	public enum BodyPart { LeftArm, RightArm, LeftLeg, RightLeg, Head };
 
 	public Transform player;
@@ -24,6 +31,7 @@ public class ThrownMember: MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		onGround = false;
+		audioSource = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -99,28 +107,28 @@ public class ThrownMember: MonoBehaviour {
 		switch (part)
 		{
 			case BodyPart.LeftArm:
-				player.speedupReload();
+				player.SpeedupReload();
 				player.leftArm.SetActive(true);
 				break;
 			case BodyPart.RightArm:
-				player.speedupReload();
+				player.SpeedupReload();
 				player.rightArm.SetActive(true);
 				player.animator.SetBool("baseAttackRight", true);
 				break;
 			case BodyPart.LeftLeg:
-				player.speedupSpeed();
+				player.SpeedupSpeed();
 				player.leftLeg.SetActive(true);
 				if (!player.rightLeg.activeInHierarchy)
 					player.GetBackOnLeg();
 				break;
 			case BodyPart.RightLeg:
-				player.speedupSpeed();
+				player.SpeedupSpeed();
 				player.rightLeg.SetActive(true);
 				if (!player.leftLeg.activeInHierarchy)
 					player.GetBackOnLeg();
 				break;
 			case BodyPart.Head:
-				player.normalControls();
+				player.NormalControls();
 				player.head.SetActive(true);
 				break;
 		}
@@ -132,6 +140,21 @@ public class ThrownMember: MonoBehaviour {
 	{
 		if (((!team1 && other.CompareTag("Player1")) || (team1 && other.CompareTag("Player2"))) && !onGround)
 		{
+			if (other.CompareTag("Player1"))
+			{
+				if (Random.Range(0, 2) == 0)
+					audioSource.PlayOneShot(nathanHurt);
+				else
+					audioSource.PlayOneShot(nathanHurt2);
+			}
+			else
+			{
+				if (Random.Range(0, 2) == 0)
+					audioSource.PlayOneShot(adrienHurt);
+				else
+					audioSource.PlayOneShot(adrienHurt2);
+			}
+
 			other.GetComponent<PlayerController>().health -= damage;
 			PutOnGround();
 		}
