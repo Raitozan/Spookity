@@ -22839,7 +22839,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4175994905737900, guid: 6c317885077b5874d8964710da4070e8, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -23.3
+      value: -23.86
       objectReference: {fileID: 0}
     - target: {fileID: 4175994905737900, guid: 6c317885077b5874d8964710da4070e8, type: 2}
       propertyPath: m_LocalPosition.y
@@ -22847,7 +22847,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4175994905737900, guid: 6c317885077b5874d8964710da4070e8, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 2.7
+      value: 1.94
       objectReference: {fileID: 0}
     - target: {fileID: 4175994905737900, guid: 6c317885077b5874d8964710da4070e8, type: 2}
       propertyPath: m_LocalRotation.x
@@ -22923,6 +22923,10 @@ Prefab:
       propertyPath: nathanHurt2
       value: 
       objectReference: {fileID: 8300000, guid: c834f0010588dfb418dfa1846088b2c3, type: 3}
+    - target: {fileID: 4377821251476450, guid: 6c317885077b5874d8964710da4070e8, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0.29
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c317885077b5874d8964710da4070e8, type: 2}
   m_IsPrefabAsset: 0
