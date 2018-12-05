@@ -1968,7 +1968,7 @@ Prefab:
     - target: {fileID: 114980460085667312, guid: 6c317885077b5874d8964710da4070e8,
         type: 2}
       propertyPath: health
-      value: 300
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 114980460085667312, guid: 6c317885077b5874d8964710da4070e8,
         type: 2}
@@ -2290,7 +2290,7 @@ Prefab:
     - target: {fileID: 114980460085667312, guid: 6c317885077b5874d8964710da4070e8,
         type: 2}
       propertyPath: health
-      value: 300
+      value: 150
       objectReference: {fileID: 0}
     - target: {fileID: 114980460085667312, guid: 6c317885077b5874d8964710da4070e8,
         type: 2}

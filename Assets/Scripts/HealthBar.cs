@@ -22,7 +22,7 @@ public class HealthBar : MonoBehaviour {
 
 	public void UpdateCanvasInfo()
 	{
-		healthBar.fillAmount = (float)(player.health) / 300.0f;
-		healthText.text = player.health.ToString() + " / 300";
+		healthBar.fillAmount = (float)(player.health) / 150.0f;
+		healthText.text = player.health.ToString() + " / 150";
 	}
 }
