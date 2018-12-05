@@ -4971,6 +4971,31 @@ Prefab:
       propertyPath: m_NormalizedViewPortRect.x
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 114980460085667312, guid: 6c317885077b5874d8964710da4070e8,
+        type: 2}
+      propertyPath: baseSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114980460085667312, guid: 6c317885077b5874d8964710da4070e8,
+        type: 2}
+      propertyPath: baseReloadTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 54572846338898160, guid: 6c317885077b5874d8964710da4070e8,
+        type: 2}
+      propertyPath: m_AngularDrag
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 54572846338898160, guid: 6c317885077b5874d8964710da4070e8,
+        type: 2}
+      propertyPath: m_Drag
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114607673349564100, guid: 6c317885077b5874d8964710da4070e8,
+        type: 2}
+      propertyPath: rotateSpeed
+      value: 80
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c317885077b5874d8964710da4070e8, type: 2}
   m_IsPrefabAsset: 0
@@ -9839,6 +9864,31 @@ Prefab:
     - target: {fileID: 1651176140984862, guid: 6c317885077b5874d8964710da4070e8, type: 2}
       propertyPath: m_TagString
       value: Player1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114980460085667312, guid: 6c317885077b5874d8964710da4070e8,
+        type: 2}
+      propertyPath: baseSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114980460085667312, guid: 6c317885077b5874d8964710da4070e8,
+        type: 2}
+      propertyPath: baseReloadTime
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 54572846338898160, guid: 6c317885077b5874d8964710da4070e8,
+        type: 2}
+      propertyPath: m_AngularDrag
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 54572846338898160, guid: 6c317885077b5874d8964710da4070e8,
+        type: 2}
+      propertyPath: m_Drag
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 114607673349564100, guid: 6c317885077b5874d8964710da4070e8,
+        type: 2}
+      propertyPath: rotateSpeed
+      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6c317885077b5874d8964710da4070e8, type: 2}

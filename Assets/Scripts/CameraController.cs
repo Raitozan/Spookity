@@ -36,6 +36,9 @@ public class CameraController : MonoBehaviour {
 		else if (gameObject.CompareTag("Player2"))
 			horizontal = Input.GetAxis("Mouse X2");
 
+		if (target.GetComponent<PlayerController>().inverted)
+			horizontal = -horizontal;
+
 		target.Rotate(0, horizontal*rotateSpeed*Time.deltaTime, 0);
 
         //Bouger la caméra selon la rotation actuelle de la cible et l'offset de base

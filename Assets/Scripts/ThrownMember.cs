@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class ThrownMember: MonoBehaviour {
 
-	public bool leg;
-	public bool head;
+	public enum BodyPart { LeftArm, RightArm, LeftLeg, RightLeg, Head };
+
+	public Transform player;
+	public BodyPart part;
+	public float getBackSpeed;
+
 	public float speed;
 	public float rotateSpeed;
 	public Vector3 direction;
 	public Vector3 start;
 	public float maxDist;
 	public bool onGround;
-	public string buttonName;
 
 	public bool team1;
 	public int damage;
@@ -30,65 +33,117 @@ public class ThrownMember: MonoBehaviour {
 			Rotate();
 			transform.position += direction * speed * Time.deltaTime;
 			if ((transform.position - start).magnitude >= maxDist)
+				PutOnGround();
+		}
+		else
+		{
+			switch (part)
 			{
-				if (!leg && !head)
-				{
-					transform.position = new Vector3(transform.position.x, 1.0f, transform.position.z);
-					transform.localRotation = Quaternion.Euler(new Vector3(90.0f, transform.localRotation.y, transform.localRotation.z));
-				}
-				else
-				{
-					transform.position = new Vector3(transform.position.x, 1.05f, transform.position.z);
-					if(head)
-						transform.localRotation = Quaternion.Euler(new Vector3(transform.localRotation.x, transform.localRotation.y, 90.0f));
-				}
-				onGround = true;
+				case BodyPart.LeftArm:
+					if ((Input.GetKeyDown(KeyCode.Joystick1Button4) && team1) || (Input.GetKeyDown(KeyCode.Joystick2Button4) && !team1))
+						GetBackToPlayer();
+					break;
+				case BodyPart.RightArm:
+					if ((Input.GetKeyDown(KeyCode.Joystick1Button5) && team1) || (Input.GetKeyDown(KeyCode.Joystick2Button5) && !team1))
+						GetBackToPlayer();
+					break;
+				case BodyPart.LeftLeg:
+					if ((Input.GetAxis("LeftLeg") >= 0.75 && team1) || (Input.GetAxis("LeftLeg2") >= 0.75 && !team1))
+						GetBackToPlayer();
+					break;
+				case BodyPart.RightLeg:
+					if ((Input.GetAxis("RightLeg") >= 0.75 && team1) || (Input.GetAxis("RightLeg2") >= 0.75 && !team1))
+						GetBackToPlayer();
+					break;
+				case BodyPart.Head:
+					if ((Input.GetKeyDown(KeyCode.Joystick1Button3) && team1) || (Input.GetKeyDown(KeyCode.Joystick2Button3) && !team1))
+						GetBackToPlayer();
+					break;
 			}
 		}
 	}
 
-	public void Rotate()
+	private void Rotate()
 	{
-		if(!leg)
+		if(part != BodyPart.LeftLeg && part != BodyPart.RightLeg)
 			transform.Rotate(new Vector3(0, 0, -rotateSpeed*Time.deltaTime));
 		else
 			transform.Rotate(new Vector3(0, rotateSpeed * Time.deltaTime, 0));
 	}
 
-	private void OnTriggerEnter(Collider other)
+	private void PutOnGround()
 	{
-		if (!team1 && other.CompareTag("Player1") || team1 && other.CompareTag("Player2"))
+		if (part == BodyPart.LeftArm || part == BodyPart.RightArm)
 		{
-			other.GetComponent<PlayerController>().health -= damage;
+			transform.position = new Vector3(transform.position.x, 1.0f, transform.position.z);
+			transform.localRotation = Quaternion.Euler(new Vector3(90.0f, transform.localRotation.y, transform.localRotation.z));
+		}
+		else
+		{
+			transform.position = new Vector3(transform.position.x, 1.05f, transform.position.z);
+			if (part == BodyPart.Head)
+				transform.localRotation = Quaternion.Euler(new Vector3(transform.localRotation.x, transform.localRotation.y, 90.0f));
+		}
+		onGround = true;
+	}
 
-			if (!leg && !head)
-			{
-				transform.position = new Vector3(transform.position.x, 1.0f, transform.position.z);
-				transform.localRotation = Quaternion.Euler(new Vector3(90.0f, transform.localRotation.y, transform.localRotation.z));
-			}
-			else
-			{
-				transform.position = new Vector3(transform.position.x, 1.05f, transform.position.z);
-				if (head)
-					transform.localRotation = Quaternion.Euler(new Vector3(transform.localRotation.x, transform.localRotation.y, 90.0f));
-			}
-			onGround = true;
+	private void GetBackToPlayer()
+	{
+		Vector3 direction = player.position - transform.position;
+		direction.y = 0;
+		transform.position += direction.normalized * getBackSpeed;
+	}
+
+	private void GiveBackMember(PlayerController player)
+	{
+		switch (part)
+		{
+			case BodyPart.LeftArm:
+				player.speedupReload();
+				player.leftArm.SetActive(true);
+				break;
+			case BodyPart.RightArm:
+				player.speedupReload();
+				player.rightArm.SetActive(true);
+				player.animator.SetBool("baseAttackRight", true);
+				break;
+			case BodyPart.LeftLeg:
+				player.speedupSpeed();
+				player.leftLeg.SetActive(true);
+				if (!player.rightLeg.activeInHierarchy)
+					player.GetBackOnLeg();
+				break;
+			case BodyPart.RightLeg:
+				player.speedupSpeed();
+				player.rightLeg.SetActive(true);
+				if (!player.leftLeg.activeInHierarchy)
+					player.GetBackOnLeg();
+				break;
+			case BodyPart.Head:
+				player.normalControls();
+				player.head.SetActive(true);
+				break;
 		}
 
-		if (other.CompareTag("Wall"))
+		Destroy(gameObject);
+	}
+
+	private void OnTriggerEnter(Collider other)
+	{
+		if (((!team1 && other.CompareTag("Player1")) || (team1 && other.CompareTag("Player2"))) && !onGround)
 		{
-			if (!leg && !head)
-			{
-				transform.position = new Vector3(transform.position.x, 1.0f, transform.position.z);
-				transform.localRotation = Quaternion.Euler(new Vector3(90.0f, transform.localRotation.y, transform.localRotation.z));
-			}
-			else
-			{
-				transform.position = new Vector3(transform.position.x, 1.05f, transform.position.z);
-				if (head)
-					transform.localRotation = Quaternion.Euler(new Vector3(transform.localRotation.x, transform.localRotation.y, 90.0f));
-			}
-			onGround = true;
+			other.GetComponent<PlayerController>().health -= damage;
+			PutOnGround();
+		}
+
+		if (other.CompareTag("Wall") && !onGround)
+		{
+			PutOnGround();
+		}
+
+		if (((team1 && other.CompareTag("Player1")) || (!team1 && other.CompareTag("Player2"))) && onGround)
+		{
+			GiveBackMember(other.GetComponent<PlayerController>());
 		}
 	}
 }
