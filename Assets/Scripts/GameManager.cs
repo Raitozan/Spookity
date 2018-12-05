@@ -29,7 +29,10 @@ public class GameManager : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		p1v.text = player1Victory.ToString() + " /";
-		p2v.text = "/ " + player2Victory.ToString();
+		if(p1v != null && p2v != null)
+		{
+			p1v.text = player1Victory.ToString() + " /";
+			p2v.text = "/ " + player2Victory.ToString();
+		}
 	}
 }

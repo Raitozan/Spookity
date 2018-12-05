@@ -305,6 +305,9 @@ public class PlayerController : MonoBehaviour {
 			GameManager.instance.player1Victory++;
 		audioSource.PlayOneShot(death);
 		yield return new WaitForSeconds(2);
-		SceneManager.LoadScene(0);
+		if((GameManager.instance.player1Victory == 2) || (GameManager.instance.player2Victory == 2))
+			SceneManager.LoadScene(2);
+		else
+			SceneManager.LoadScene(1);
 	}
 }
